@@ -162,7 +162,6 @@ public class NotificationUtils {
         return replyPackageNameList.contains(notificationPackageName);
     }
 
-    //getNotificationById
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static StatusBarNotification getNotificationById(int id) {
         for (StatusBarNotification notification : activeNotifications) {
@@ -171,6 +170,16 @@ public class NotificationUtils {
             }
         }
         return null;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static void removeNotificationById(int id) {
+        for (StatusBarNotification notification : activeNotifications) {
+            if (notification.getId() == id) {
+                activeNotifications.remove(notification);
+                break;
+            }
+        }
     }
 
 

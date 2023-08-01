@@ -89,8 +89,9 @@ public class AutoReply {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void sendReply(int notificationId, String message){
         StatusBarNotification sbn = NotificationUtils.getNotificationById(notificationId);
-        if(sbn != null){
+        if(sbn != null) {
             sendReply(sbn, sbn.getPackageName(), "", message);
+            NotificationUtils.removeNotificationById(notificationId);
         }
     }
 
