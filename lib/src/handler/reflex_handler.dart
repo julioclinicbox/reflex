@@ -102,4 +102,19 @@ class ReflexHandler {
   Future<void> requestPermission() async {
     await _methodChannel.invokeMethod('requestPermission');
   }
+
+  // reply to notification
+  Future<void> replyToNotification({
+    required int notificationId,
+    required String reply
+  }) async {
+    await _methodChannel.invokeMethod(
+      'replyToNotification',
+      {
+        "notificationId": notificationId,
+        "reply": reply
+      }
+    );
+  }
+
 }

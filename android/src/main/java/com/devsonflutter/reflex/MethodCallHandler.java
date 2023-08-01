@@ -10,10 +10,12 @@ for more details.
 
 package com.devsonflutter.reflex;
 
+import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.devsonflutter.reflex.notification.autoReply.AutoReply;
 import com.devsonflutter.reflex.permission.NotificationPermission;
 
 import io.flutter.plugin.common.MethodCall;
@@ -37,6 +39,17 @@ public class MethodCallHandler implements MethodChannel.MethodCallHandler {
                 notificationPermission.requestPermission();
                 break;
             case "sendReply":
+                break;
+            case "replyToNotification":
+                
+                // get notification id from flutter
+                int notificationId = call.argument("notificationId");
+                // get reply from flutter
+                String reply = call.argument("reply");
+               
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    new AutoReply(ReflexPlugin.context).sendReply(notificationId, reply);
+                }
                 break;
             default:
                 result.notImplemented();

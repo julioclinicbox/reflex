@@ -36,9 +36,12 @@ public class NotificationUtils {
     public static String NOTIFICATION_PACKAGE_NAME = "notification_package_name";
     public static String NOTIFICATION_MESSAGE = "notification_message";
     public static String NOTIFICATION_TITLE = "notification_title";
+    public static String NOTIFICATION_ID = "notification_id";
 
     private static final List<String> listeningPackageNameList = ReflexPlugin.packageNameList;
     private static final List<String> listeningExceptionPackageNameList = ReflexPlugin.packageNameExceptionList;
+
+    static List<StatusBarNotification> activeNotifications = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static NotificationWear extractWearNotification(StatusBarNotification sbn){
@@ -158,4 +161,18 @@ public class NotificationUtils {
         // Check notification's package name contained in AutoReply's PackageNameList
         return replyPackageNameList.contains(notificationPackageName);
     }
+
+    //getNotificationById
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static StatusBarNotification getNotificationById(int id) {
+        for (StatusBarNotification notification : activeNotifications) {
+            if (notification.getId() == id) {
+                return notification;
+            }
+        }
+        return null;
+    }
+
+
+
 }

@@ -84,4 +84,14 @@ public class AutoReply {
             e.printStackTrace();
         }
     }
+
+    // send reply by notification id
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void sendReply(int notificationId, String message){
+        StatusBarNotification sbn = NotificationUtils.getNotificationById(notificationId);
+        if(sbn != null){
+            sendReply(sbn, sbn.getPackageName(), "", message);
+        }
+    }
+
 }

@@ -37,6 +37,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         String packageName = intent.getStringExtra(NotificationUtils.NOTIFICATION_PACKAGE_NAME);
         String title = intent.getStringExtra(NotificationUtils.NOTIFICATION_TITLE);
         String message = intent.getStringExtra(NotificationUtils.NOTIFICATION_MESSAGE);
+        int id = intent.getIntExtra(NotificationUtils.NOTIFICATION_ID, 999999999);
 
         boolean sendData = false;
 
@@ -62,6 +63,8 @@ public class NotificationReceiver extends BroadcastReceiver {
             data.put("packageName", packageName);
             data.put("title", title);
             data.put("message", message);
+            if (id != 999999999)
+                data.put("id", id);
 
             ReflexPlugin.debugPrint("Notification Received From: " + packageName);
 

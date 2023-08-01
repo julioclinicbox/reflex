@@ -17,6 +17,7 @@ class ReflexEvent {
     this.title,
     this.message,
     this.timeStamp,
+    this.id,
   });
 
   /// Event type Notification/Reply
@@ -34,11 +35,16 @@ class ReflexEvent {
   /// The time stamp of the notification.
   DateTime? timeStamp;
 
+  /// the notification id
+  int? id;
+
   factory ReflexEvent.fromMap(Map<dynamic, dynamic> map) {
     DateTime time = DateTime.now();
     String? name = map['packageName'];
     String? message = map['message'];
     String? title = map['title'];
+    // notification id
+    int? id = map['id'];
 
     ReflexEventType? type;
 
@@ -54,6 +60,7 @@ class ReflexEvent {
       title: title,
       message: message,
       timeStamp: time,
+      id: id,
     );
   }
 
@@ -68,6 +75,8 @@ class ReflexEvent {
     Package Name: $packageName, 
     Title: $title, 
     Message: $message, 
-    Timestamp: $timeStamp''';
+    Timestamp: $timeStamp
+    ID: $id
+    ''';
   }
 }

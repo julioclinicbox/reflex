@@ -65,4 +65,16 @@ class Reflex {
   static Future<void> requestPermission() async {
     return reflexHandler.requestPermission();
   }
+
+  // replyToNotification
+  static Future<void> replyToNotification({
+    required int notificationId,
+    required String reply
+  }) async {
+    return reflexHandler.replyToNotification(
+      notificationId: notificationId,
+      reply: reply
+    );
+  }
+
 }

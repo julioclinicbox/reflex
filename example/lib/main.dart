@@ -37,6 +37,15 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       if (event.type == ReflexEventType.notification) {
         _notificationLogs.add(event);
+
+        if (event.id != null) {
+          print("sending reply");
+          Reflex.replyToNotification(
+            notificationId: event.id!,
+            reply: "This is an automated reply from Reflex. your message was ${event.message}",
+          );
+        }
+
       } else if (event.type == ReflexEventType.reply) {
         _autoReplyLogs.add(event);
       }
@@ -50,10 +59,6 @@ class _MyAppState extends State<MyApp> {
         debug: true,
         packageNameList: ["com.whatsapp", "com.tyup"],
         packageNameExceptionList: ["com.facebook"],
-        autoReply: AutoReply(
-          packageNameList: ["com.whatsapp"],
-          message: "[Reflex] This is an automated reply.",
-        ),
       );
       _subscription = reflex.notificationStream!.listen(onData);
       setState(() {

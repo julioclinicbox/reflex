@@ -1,5 +1,7 @@
 # Reflex
 
+This fork allows you to decide when to send the auto reply. The original plugin sends the auto reply as soon as the notification is received. This fork allows you to decide when to send the auto reply. For example, you can send the auto reply only when the notification is received from a specific contact. please see the example directory for more details.
+
 Flutter plugin for notification read & reply.
 
 <img src="https://i.imgur.com/Y8kadag.png" title="Flutter_Shortcuts"/>

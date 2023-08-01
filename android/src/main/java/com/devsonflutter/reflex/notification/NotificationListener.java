@@ -58,9 +58,13 @@ public class NotificationListener extends NotificationListenerService {
         if(text == null){
             text = "No message!";
         }
-
+        
+        int notificationId = notification.getId(); // Get the notification ID
+        intent.putExtra(NotificationUtils.NOTIFICATION_ID, notificationId);
         intent.putExtra(NotificationUtils.NOTIFICATION_TITLE, title.toString());
         intent.putExtra(NotificationUtils.NOTIFICATION_MESSAGE, text.toString());
+        
+        addActiveNotification(notification);
 
         // Notification Receiver listens to this broadcast
         sendBroadcast(intent);
@@ -80,5 +84,12 @@ public class NotificationListener extends NotificationListenerService {
         super.onStartCommand(intent, flags, startId);
         return START_STICKY;
     }
+
+    private void addActiveNotification(StatusBarNotification notification) {
+        if (!NotificationUtils.activeNotifications.contains(notification)) {
+            NotificationUtils.activeNotifications.add(notification);
+        }
+    }
+
 }
 
