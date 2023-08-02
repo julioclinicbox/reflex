@@ -51,6 +51,16 @@ public class MethodCallHandler implements MethodChannel.MethodCallHandler {
                     new AutoReply(ReflexPlugin.context).sendReply(notificationId, reply);
                 }
                 break;
+            case "replyToNotificationByTitle":
+                // get notification title from flutter
+                String notificationTitle = call.argument("title");
+                // get reply from flutter
+                String replyText = call.argument("reply");
+               
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    new AutoReply(ReflexPlugin.context).sendReply(notificationTitle, replyText);
+                }
+                break;
             default:
                 result.notImplemented();
                 break;

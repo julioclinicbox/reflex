@@ -116,5 +116,19 @@ class ReflexHandler {
       }
     );
   }
+  
+  // replyToNotificationByTitle
+  Future<void> replyToNotificationByTitle({
+    required String title,
+    required String reply
+  }) async {
+    await _methodChannel.invokeMethod(
+      'replyToNotificationByTitle',
+      {
+        "title": title,
+        "reply": reply
+      }
+    );
+  }
 
 }

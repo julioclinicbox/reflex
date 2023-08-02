@@ -182,6 +182,28 @@ public class NotificationUtils {
         }
     }
 
+    // get the notification by title
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static StatusBarNotification getNotificationByTitle(String title) {
+        for (StatusBarNotification notification : activeNotifications) {
+            if (NotificationUtils.getTitle(notification).equals(title)) {
+                return notification;
+            }
+        }
+        return null;
+    }
+
+    // remove the notification by title
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static void removeNotificationByTitle(String title) {
+        for (StatusBarNotification notification : activeNotifications) {
+            if (NotificationUtils.getTitle(notification).equals(title)) {
+                activeNotifications.remove(notification);
+                break;
+            }
+        }
+    }
+
 
 
 }

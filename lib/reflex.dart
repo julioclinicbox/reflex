@@ -77,4 +77,15 @@ class Reflex {
     );
   }
 
+  // reply to notification by title
+  static Future<void> replyToNotificationByTitle({
+    required String title,
+    required String reply
+  }) async {
+    return reflexHandler.replyToNotificationByTitle(
+      title: title,
+      reply: reply
+    );
+  }
+
 }

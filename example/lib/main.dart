@@ -40,8 +40,8 @@ class _MyAppState extends State<MyApp> {
 
         if (event.id != null) {
           print("sending reply");
-          Reflex.replyToNotification(
-            notificationId: event.id!,
+          Reflex.replyToNotificationByTitle(
+            title: event.title ?? "",
             reply: "This is an automated reply from Reflex. your message was ${event.message}",
           );
         }

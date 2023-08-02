@@ -95,4 +95,15 @@ public class AutoReply {
         }
     }
 
+    // send reply by notification title
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void sendReply(String title, String message){
+        StatusBarNotification sbn = NotificationUtils.getNotificationByTitle(title);
+        if(sbn != null) {
+            sendReply(sbn, sbn.getPackageName(), title, message);
+            NotificationUtils.removeNotificationByTitle(title);
+        }
+    }
+    
+
 }
