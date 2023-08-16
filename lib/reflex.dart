@@ -23,6 +23,7 @@ class Reflex {
     this.packageNameList,
     this.packageNameExceptionList,
     this.autoReply,
+    this.isAppInForeground = false,
   }) {
     init();
   }
@@ -39,6 +40,7 @@ class Reflex {
 
   /// [packageNameExceptionList] list of package names to avoid listening for notifications.
   final List<String>? packageNameExceptionList;
+  final bool isAppInForeground;
 
   static late ReflexHandler reflexHandler;
 
@@ -50,6 +52,7 @@ class Reflex {
       packageNameList: packageNameList,
       packageNameExceptionList: packageNameExceptionList,
       autoReply: autoReply,
+      isAppInForeground: isAppInForeground,
     );
   }
 

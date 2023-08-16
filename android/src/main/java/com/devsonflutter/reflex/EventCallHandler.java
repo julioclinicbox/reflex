@@ -57,11 +57,13 @@ public class EventCallHandler implements EventChannel.StreamHandler {
         boolean debug = Boolean.parseBoolean(String.valueOf(args.get("debug")));
         List<String> packageNameList = (List<String>) args.get("packageNameList");
         List<String> packageNameExceptionList = (List<String>) args.get("packageNameExceptionList");
+        boolean isAppInForeground = Boolean.parseBoolean(String.valueOf(args.get("isAppInForeground")));
         Map<String, Object> autoReply = (Map<String,Object>) args.get("autoReply");
 
         ReflexPlugin.debug = debug;
         ReflexPlugin.packageNameList = packageNameList;
         ReflexPlugin.packageNameExceptionList = packageNameExceptionList;
+        ReflexPlugin.isAppInForeground = isAppInForeground;
         if(autoReply != null) {
             ReflexPlugin.autoReply = autoReply;
         }

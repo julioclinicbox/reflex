@@ -59,6 +59,7 @@ class _MyAppState extends State<MyApp> {
         debug: true,
         packageNameList: ["com.whatsapp", "com.tyup"],
         packageNameExceptionList: ["com.facebook"],
+        isAppInForeground: true,
       );
       _subscription = reflex.notificationStream!.listen(onData);
       setState(() {

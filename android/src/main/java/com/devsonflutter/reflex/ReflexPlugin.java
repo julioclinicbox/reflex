@@ -71,6 +71,7 @@ public class ReflexPlugin implements FlutterPlugin {
   public static List<String> packageNameList = null;
   public static List<String> packageNameExceptionList = null;
   public static Map<String,Object> autoReply = null;
+  public static boolean isAppInForeground = false;
   /* ------------- Flutter Variables -------------- */
 
   /* ------------- Utility Functions -------------- */
@@ -113,6 +114,8 @@ public class ReflexPlugin implements FlutterPlugin {
 
   @Override
   public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-    teardownChannel();
+    if (!isAppInForeground) {
+      teardownChannel();
+    }
   }
 }

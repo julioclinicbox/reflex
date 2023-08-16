@@ -32,6 +32,7 @@ class ReflexHandler {
 
   void init({
     required bool debug,
+    bool isAppInForeground = false,
     List<String>? packageNameList,
     List<String>? packageNameExceptionList,
     AutoReply? autoReply,
@@ -76,6 +77,7 @@ class ReflexHandler {
       "packageNameList": packageNameList,
       "packageNameExceptionList": packageNameExceptionList,
       "autoReply": autoReply?.deserialize(),
+      "isAppInForeground": isAppInForeground,
     };
 
     arguments = [map];
